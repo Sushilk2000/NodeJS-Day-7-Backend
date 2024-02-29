@@ -19,6 +19,8 @@ app.post("/urlShortner", (req, res) => {
   const shortUrl = nanoid(6);
   urlMap[shortUrl] = longUrl;
 
+  console.log(urlMap); // Log the urlMap for debugging
+
   res.status(200).json({ shortUrl });
 });
 
@@ -31,5 +33,5 @@ app.get("/:shortUrl", (req, res) => {
 
   res.redirect(301, longUrl);
 });
-console.log(urlMap);
+
 app.listen(port, () => console.log(`Server running on port ${port}`));
